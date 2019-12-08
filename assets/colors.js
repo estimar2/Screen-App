@@ -5,5 +5,6 @@ export const publicColors = {
   SUC_COLOR: "#4bcffa",
   BACKGROUND: "#fff",
   CLICK: "#0f4c81",
-  SHADOW: "#555"
+  SHADOW: "#555",
+  BTN_COLOR: "#f7d794"
 };

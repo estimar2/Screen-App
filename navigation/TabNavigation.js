@@ -26,6 +26,7 @@ const TabNavigation = createBottomTabNavigator(
     tabBarOptions: {
       style: {
         backgroundColor: publicColors.BACKGROUND,
+        // ios일 경우 18을 주고 아닐경우 : 뒤의 값을 줌
         paddingBottom: Platform.OS === "ios" ? 18 : 18
       }
     }

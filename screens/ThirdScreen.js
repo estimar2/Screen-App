@@ -7,11 +7,24 @@ import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import styled from "styled-components";
 import { publicColors } from "../assets/colors";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import ComInput from "../components/ComInput";
+import ComButton from "../components/ComButton";
 
 const Title = styled.Text`
-  color: ${publicColors.BLACK};
-  font-size: 20px;
+  font-size: 26px;
+  color: ${publicColors.SUC_COLOR};
+  margin-left: 20px;
+`;
+
+const Forget = styled.Text`
+  font-size: 16px;
+  color: ${publicColors.SUC_COLOR};
+`;
+
+const CpTxt = styled.Text`
+  font-size: 10px;
+  color: #777;
 `;
 
 //extends가 없는 상태 => 그냥 객체(Object) : 아무런 기능이 없다.
@@ -20,26 +33,58 @@ const Title = styled.Text`
 
 //extends가 붙으면 리엑트 컴포넌트로써의 클래스 라고 이야기 한다.
 
-class ThirdScreen extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <TouchableOpacity>
-          <AntDesign
-            name="login-variant"
-            size={32}
-            color={publicColors.SUC_COLOR}
-          />
-        </TouchableOpacity>
-
-        <Title>I'm ThirdScreen</Title>
+const ThirdScreen = ({ navigation }) => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.box_1}>
+        <AntDesign name="login" size={32} />
+        <Title>Sign In.</Title>
       </View>
-    );
-  }
-}
+
+      <View style={styles.box_2}>
+        <ComInput ph="Email" />
+        <ComInput ph="Password" st={true} />
+        <Forget>Forget your Password??</Forget>
+
+        <View style={styles.btnArea}>
+          {/* nav라는 이름에 navigation을 담아서 보내줌 */}
+          <ComButton txt="Sign Up" nav={navigation} su={true} />
+          <View style={{ width: 10 }}></View>
+          <ComButton txt="Login" nav={navigation} su={false} />
+        </View>
+      </View>
+
+      <View style={styles.box_3}>
+        <CpTxt>@copyright by devloper song </CpTxt>
+        <TouchableOpacity
+          onPress={() => navigation.navigate({ routeName: "SignUp2" })}
+        >
+          <Text>ETC PAGE</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  box_1: {
+    flex: 2,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row"
+  },
+  box_2: {
+    flex: 3,
+    justifyContent: "flex-start",
+    alignItems: "center"
+  },
+  btnArea: { flexDirection: "row", marginTop: 10 },
+  box_3: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
